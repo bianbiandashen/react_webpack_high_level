@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "lib": ["es2016", "dom"],
+    "rootDir": "src",
+    "strict": true,
+    "removeComments": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "isolatedModules": true
+  },
+  "include": ["src/**/*"]
+}
