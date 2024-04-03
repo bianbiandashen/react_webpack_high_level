@@ -12,6 +12,9 @@ export class Square {
 
   public set viewer(value: IViewer | undefined) {
     this._viewer = value;
+    if (value) {
+      this._viewer?.show();
+    }
   }
 
   public get point(): Point {

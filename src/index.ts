@@ -1,23 +1,23 @@
 import { Square } from "./core/Square";
 import { IViewer } from "./core/types";
+import { SquarePageViewer } from "./core/viewer/SquarePageViewer";
+import $ from "jquery";
 
 /** 契约 */
-
 /** 给方方做个小方块 */
-class SquareConsoleViewer implements IViewer {
-  constructor(private square: Square) {}
-  show(): void {
-    console.log(this.square.point, this.square.color, "SquareConsoleViewer");
-  }
-  remove(): void {
-    console.log("SquareConsoleViewer");
-  }
-}
-
 const sq = new Square({ x: 0, y: 0 }, "red");
 
-sq.viewer = new SquareConsoleViewer(sq);
+sq.point = { x: 0, y: 0 };
+sq.viewer = new SquarePageViewer(sq, $("#root"));
 
-sq.point = { x: 10, y: 10 };
+$("#btn-down").on("click", () => {
+  sq.point = { x: sq.point?.x, y: sq.point?.y + 1 };
+});
 
-sq.point = { x: 10, y: 12 };
+$("#btn-remove").on("click", () => {
+  sq.viewer?.remove();
+});
+$("#btn-add").on("click", () => {
+  const sq = new Square({ x: 0, y: 0 }, "red");
+  sq.viewer = new SquarePageViewer(sq, $("#root"));
+});
